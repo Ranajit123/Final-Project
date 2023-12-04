@@ -59,21 +59,21 @@ app.layout = html.Div([
     dcc.Graph(id='graph')
 ])
 
-@callback(
-    Output('container-button-basic', 'children'),
-    Output('graph', 'figure'),
-    Input('sRec', 'n_clicks'),
-    Input('result', 'n_clicks')
-)
+
+
+@callback(Output(component_id='container-button-basic', component_property='children'),
+        Output('graph', 'figure'),
+        Input('sRec', 'n_clicks'),
+        Input('result', 'n_clicks'))
+
 def update_output(btn1, btn2):
     msg = "No Button is clicked"
-    fig = None
     
     if 'sRec' in ctx.triggered_id:
         msg = 'Start Recording button is clicked'
         audio_arr, time = start_recording()
         print(audio_arr)
-    elif 'result' in ctx.triggered_id:
+    elif 'result' in ctx.triggered_id:    
         msg = 'Show result Button is clicked'
         df = pd.DataFrame({
             "Audio_value": audio_arr,
@@ -89,5 +89,6 @@ def update_output(btn1, btn2):
 
     return html.Div(msg), fig
 
-if __name__ == '__main__':
+if __name__== '__main__':
+
     app.run(debug=True)
