@@ -69,11 +69,11 @@ app.layout = html.Div([
 def update_output(btn1, btn2):
     msg = "No Button is clicked"
     
-    if 'sRec' in ctx.triggered_id:
+    if 'sRec' == ctx.triggered_id:
         msg = 'Start Recording button is clicked'
         audio_arr, time = start_recording()
         print(audio_arr)
-    elif 'result' in ctx.triggered_id:    
+    elif 'result' == ctx.triggered_id:    
         msg = 'Show result Button is clicked'
         df = pd.DataFrame({
             "Audio_value": audio_arr,

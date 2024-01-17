@@ -3,6 +3,7 @@ import wave
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 FRAMES_PER_BUFFER = 3200
 FORMAT = pyaudio.paFloat32
 CHANNELS = 1
@@ -32,7 +33,6 @@ for i in range(0, int(RATE/FRAMES_PER_BUFFER*seconds)):
         second_tracking = 0
         print(f'Time Left: {seconds - second_count} seconds')
 
-
 stream.stop_stream()
 stream.close()
 pa.terminate()
@@ -44,7 +44,6 @@ obj.setframerate(RATE)
 obj.writeframes(b''.join(frames))
 obj.close()
 
-
 file = wave.open('lemaster_tech.wav', 'rb')
 
 sample_freq = file.getframerate()
@@ -53,9 +52,7 @@ signal_wave = file.readframes(-1)
 
 file.close()
 
-
 time = frames / sample_freq
-
 
 # # if one channel use int16, if 2 use int32
 audio_array = np.frombuffer(signal_wave, dtype='float32')
