@@ -3,7 +3,6 @@ import wave
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 FRAMES_PER_BUFFER = 3200
 FORMAT = pyaudio.paFloat32
 CHANNELS = 1
@@ -54,7 +53,6 @@ file.close()
 
 time = frames / sample_freq
 
-# # if one channel use int16, if 2 use int32
 audio_array = np.frombuffer(signal_wave, dtype='float32')
 print (audio_array)
 
